@@ -1,4 +1,4 @@
-var Recipes = new Meteor.Collection("recipes");
+var Recipes = new Mongo.Collection("recipes");
 
 RecipeSchema = new SimpleSchema({
     name: {
