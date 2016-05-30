@@ -1,4 +1,11 @@
-var Recipes = new Mongo.Collection("recipes");
+Recipes = new Mongo.Collection("recipes");
+
+
+Recipes.allow({
+    insert: function(userId, doc){
+        return !!userId;
+    }
+});
 
 RecipeSchema = new SimpleSchema({
     name: {
@@ -14,6 +21,9 @@ RecipeSchema = new SimpleSchema({
         label: 'Author',
         autoValue: function () {
             return this.userId;
+        },
+        autoform:{
+            type:"hidden"
         }
     },
     dateCreated: {
@@ -21,6 +31,9 @@ RecipeSchema = new SimpleSchema({
         label: 'Date Created',
         autoValue: function () {
             return new Date();
+        },
+        autoform:{
+            type:"hidden"
         }
     }
 });
