@@ -3,3 +3,11 @@ Meteor.publish("recipes", function () {
         author: this.userId
     });
 });
+// sigle item subscription
+Meteor.publish("singleRecipe", function (id) {
+	check(id, String);
+    return Recipes.find({
+        _id: id
+    });
+});
+
