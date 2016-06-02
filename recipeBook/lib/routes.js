@@ -1,36 +1,47 @@
-FlowRouter.triggers.enter([
+ if (Meteor.isClient) {
+     Accounts.onLogin(function () {
+         FlowRouter.go('recipe-book');
+     });
 
-    function (context, redirect) {
-        if (!Meteor.userId()) {
-            FlowRouter.go('home');
-        }
-    }
-]);
+     Accounts.onLogout(function () {
+         FlowRouter.go('home');
+     });
+ }
 
-FlowRouter.route('/', {
-    name: "home",
-    action() {
-        if (Meteor.userId()) {
-            FlowRouter.go('recipe-book');
-        }
-        BlazeLayout.render('HomeLayout');
-    }
-});
 
-FlowRouter.route('/recipe-book', {
-    name: "recipe-book",
-    action() {
-        BlazeLayout.render('MainLayout', {
-            main: "Recipes"
-        });
-    }
-});
+ FlowRouter.triggers.enter([
 
-FlowRouter.route('/recipe-details/:id', {
-    name: "recipe-details",
-    action() {
-        BlazeLayout.render('MainLayout', {
-            main: "RecipeDetails"
-        });
-    }
-});
+     function (context, redirect) {
+         if (!Meteor.userId()) {
+             FlowRouter.go('home');
+         }
+     }
+ ]);
+
+ FlowRouter.route('/', {
+     name: "home",
+     action() {
+         if (Meteor.userId()) {
+             FlowRouter.go('recipe-book');
+         }
+         BlazeLayout.render('HomeLayout');
+     }
+ });
+
+ FlowRouter.route('/recipe-book', {
+     name: "recipe-book",
+     action() {
+         BlazeLayout.render('MainLayout', {
+             main: "Recipes"
+         });
+     }
+ });
+
+ FlowRouter.route('/recipe-details/:id', {
+     name: "recipe-details",
+     action() {
+         BlazeLayout.render('MainLayout', {
+             main: "RecipeDetails"
+         });
+     }
+ });
