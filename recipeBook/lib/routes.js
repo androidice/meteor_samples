@@ -45,3 +45,21 @@
          });
      }
  });
+
+ FlowRouter.route('/menu', {
+     name: "menu",
+     action() {
+         BlazeLayout.render('MainLayout', {
+             main: "Menu"
+         });
+     }
+ });
+
+ FlowRouter.route('/shopping-list', {
+     name: "shopping-list",
+     action() {
+         BlazeLayout.render('MainLayout', {
+             main: "ShoppingList"
+         });
+     }
+ });
