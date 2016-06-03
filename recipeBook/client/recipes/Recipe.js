@@ -5,8 +5,15 @@ Template.Recipes.onCreated(function(){
 	// into a specific objects
 	var self = this;
 	self.autorun(function(){
+		Session.set('newRecipe', false);
 		self.subscribe('recipes');
 	});
+});
+
+Template.Recipes.events({
+	'click .new-recipe': function(){
+		Session.set('newRecipe', true);
+	}
 });
 
 Template.Recipes.helpers({
