@@ -18,7 +18,7 @@ import {Tasks} from '../../imports/api/tasks.js';
 
 		self.methods = {
 			revert: function(id, currentState){
-
+				Meteor.call("updateTask", id, !currentState);
 			}
 		}
 	}]);
