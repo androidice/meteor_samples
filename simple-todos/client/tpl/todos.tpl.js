@@ -16,25 +16,28 @@ import {Tasks} from '../../imports/api/tasks.js';
 
 		self.helpers({
 			tasks() {
-				return Tasks.find({});
+				return Tasks.find({
+					completed: false
+				});
 			}
 
 		});
 
-		self.addTask = function(newTask) {
-			// Insert a task into the collection
-			Tasks.insert({
-				text: newTask,
-				createdAt: new Date()
-			});
+		self.methods = {
+			addTask: function(newTask) {
+				// Insert a task into the collection
+				Tasks.insert({
+					text: newTask,
+					createdAt: new Date()
+				});
 
-			// Clear form
-			self.newTask = '';
-		};
-
-		self.completeTask = function(id, currentState) {
-			Meteor.call("updateTask", id, currentState);
-		};
-
+				// Clear form
+				self.newTask = '';
+			},
+			completeTask: function(id, currentState) {
+				Meteor.call("updateTask", id, currentState);
+			}
+		}
+		
 	}]);
 })();

@@ -1,7 +1,7 @@
 <header>
 	<h1>Todo List</h1>
 
-	<form class="new-task" data-ng-submit="vm.addTask(vm.newTask)">
+	<form class="new-task" data-ng-submit="vm.methods.addTask(vm.newTask)">
     	<input ng-model="vm.newTask" type="text" name="text" placeholder="Type to add new tasks"/>
   	</form>
   
@@ -10,7 +10,7 @@
 <div>
 	<ul>
 	  <li data-ng-repeat="task in vm.tasks">
-	    <input type="checkbox" id="chkbx_{{$index}}" data-ng-model="vm.completed[$index]" data-ng-change="vm.completeTask(task._id,vm.completed[$index])"/>
+	    <input type="checkbox" id="chkbx_{{$index}}" data-ng-model="vm.completed[$index]" data-ng-change="vm.methods.completeTask(task._id,vm.completed[$index])"/>
 	    <label for="chkbx_{{$index}}">
 	    	{{task.text}}
 	    </label>
