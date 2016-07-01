@@ -1,19 +1,14 @@
-<header>
-	<h1>Completed List</h1>
-</header>
 <div>
-	<ul>
-	  <li data-ng-repeat="task in vm.tasks">
-	    <label>
-	    	{{task.text}}
-	    </label>
-	    <label>
-		    <input type="checkbox" id="chkbx_{{$index}}" data-ng-model="vm.completed[$index]" data-ng-change="vm.methods.revert(task._id,vm.completed[$index])"/>
-		    <label for="chkbx_{{$index}}">
-		    	revert
-		    </label>
-	    </label>
-	  </li>
-	</ul>
+	<header>
+		<h1>Completed List</h1>
+	</header>
+	<div>
+		<ul>
+		  <li data-ng-repeat="task in vm.tasks">
+		    <label data-ng-bind="task.text"></label>
+		  </li>
+		</ul>
+	</div>
 </div>
+
 
