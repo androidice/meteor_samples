@@ -4,5 +4,7 @@ import template from './main.html';
 
 
 (function() {
-	angular.module('app', [angularMeteor, 'app.directives']);
+	angular.module('app', [angularMeteor, 'app.directives']).config(function(){
+		console.log('config run');
+	});
 })();
